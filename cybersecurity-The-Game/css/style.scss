@@ -1,0 +1,299 @@
+// Farvepalet - juster disse for at ændre temaet
+$primary-dark: #0a0f2c;
+$secondary-dark: #113b29;
+$accent-color: #5ff894;
+$text-color: #ffffff;
+$border-color: #333;
+$shadow-color: rgba(0, 0, 0, 0.5);
+$cyber-accent: #47ff6f;
+
+// Metalliske gradient farver til knapper
+$metallic-gradient-start: #2aa946;
+$metallic-gradient-end: #096438;
+
+// Typografi
+$main-font: orbitron, sans-serif;
+$mono-font: 'Roboto Mono', monospace;
+
+// Generelle styles for body
+body {
+  margin:0%;
+  color: $text-color;
+  font-family: $main-font;
+  min-height: 100vh;
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+// Styling for baggrundsvideo-container
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.background-video video {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.game-container {
+    width: 100%; /* Sikrer at containeren fylder bredden af body (inden for margener/padding) */
+    max-width: 800px; /* Din ønskede faste maksimale bredde */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrer indholdet indeni vandret */
+    position: relative;
+    z-index: 1;
+    margin: 2rem auto; /* Tilføj top og bund margin for vertikal afstand og auto for horisontal centrering */
+  }
+
+// Styling for de forskellige skærmsektioner
+.screen {
+  display: none;
+  width: 100%;
+  background: rgba($secondary-dark, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 8px $shadow-color;
+  margin-bottom: 2rem;
+
+  &.active {
+    display: block;
+  }
+
+  &.fade-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+}
+
+// Styling for overskrifter
+h1, h2 {
+  color: $cyber-accent;
+  text-shadow: 0 0 10px $cyber-accent;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+h1 {
+  font-size: xxx-large;
+}
+
+h2 {
+  font-size: x-large;
+}
+
+p {
+  font-family: $mono-font;
+}
+
+// Styling for kategoriknapper på startsiden
+.categories {
+  display: flex;
+  flex-direction: column; /* Stak knapperne vertikalt */
+  width: 100%; /* Sikrer at containeren fylder bredden */
+  align-items: stretch; /* Strækker knapperne til at fylde bredden */
+  margin-bottom: 1rem; /* Tilføj margin under kategoriknapperne */
+
+  button.category-button {
+    font-family: $mono-font;
+    background: linear-gradient(to bottom, $metallic-gradient-start, $metallic-gradient-end);
+    border: 1px solid $border-color;
+    padding: 1rem;
+    margin: 0.5rem 0; /* Top og bund margin for afstand mellem knapper */
+    border-radius: 8px;
+    color: $text-color;
+    font-size: 1.1rem; /* Lidt større skrift for kategorier */
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px $shadow-color;
+
+    &:hover {
+      background: linear-gradient(to bottom, lighten($metallic-gradient-start, 10%), lighten($metallic-gradient-end, 10%));
+      transform: scale(1.03);
+      box-shadow: 0 6px 8px lighten($shadow-color, 30%);
+    }
+
+    &:focus {
+      outline: 2px solid $cyber-accent;
+      outline-offset: 2px;
+    }
+  }
+}
+
+
+
+// Styling for svarmuligheds-knapper
+#answers {
+  button {
+    font-family: $mono-font;
+    background: linear-gradient(to bottom, $metallic-gradient-start, $metallic-gradient-end);
+    border: 1px solid $border-color;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    width: 100%;
+    color: $text-color;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px $shadow-color;
+    text-align: left; /* Venstrejuster tekst i svarmuligheder */
+
+    &:hover {
+      background: linear-gradient(to bottom, lighten($metallic-gradient-start, 10%), lighten($metallic-gradient-end, 10%));
+      transform: scale(1.03);
+      box-shadow: 0 4px 8px lighten($shadow-color, 10%);
+    }
+
+    &:focus {
+      outline: 2px solid $cyber-accent;
+      outline-offset: 2px;
+    }
+  }
+}
+
+// Styling for generelle knapper (Start, Start igen)
+.screen button:not(.category-button) {
+  font-family: $mono-font;
+  background: linear-gradient(to bottom, $metallic-gradient-start, $metallic-gradient-end);
+  border: 1px solid $border-color;
+  padding: 1rem 2rem; /* Lidt mere horisontal padding */
+  margin-top: 1rem; /* Tilføj lidt top margin */
+  border-radius: 8px;
+  color: $text-color;
+  font-size: 1.1rem; /* Samme størrelse som kategoriknapper */
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px $shadow-color;
+  width: auto; /* Tilpas bredden til indholdet */
+  display: block; /* Sikrer at knapper tager fuld bredde af deres container (centeret af .screen) */
+  margin-left: auto;
+  margin-right: auto;
+
+  &:hover {
+    background: linear-gradient(to bottom, lighten($metallic-gradient-start, 10%), lighten($metallic-gradient-end, 10%));
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px lighten($shadow-color, 10%);
+  }
+
+  &:focus {
+    outline: 2px solid $cyber-accent;
+    outline-offset: 2px;
+  }
+}
+
+// Styling for resultatskærmen
+#result-screen {
+  h2 {
+    margin-top: 0;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  #final-score {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  #final-title {
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    color: $accent-color;
+  }
+}
+
+#result-screen .user-choices-overview {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(17, 17, 17, 0.7); /* En lidt lysere baggrund for oversigten */
+  border-radius: 8px;
+  text-align: left;
+  line-height: 30px;
+  font-family:$mono-font ;
+}
+
+#result-screen .user-choices-overview h3 {
+  color: $accent-color;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#result-screen .user-choices-overview ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#result-screen .user-choices-overview li {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $border-color;
+}
+
+#result-screen .user-choices-overview li:last-child {
+  border-bottom: none;
+}
+
+#result-screen .user-choices-overview strong {
+  color: $cyber-accent;
+}
+
+// Fade-in animation
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsivt design for mindre skærme
+@media (max-width: 600px) {
+  .screen {
+    padding: 1rem;
+    border-radius: 5;
+  }
+
+  h1 {
+    font-size: x-large;
+  }
+
+  .categories {
+    flex-direction: column; /* Beholder vertikal stak på små skærme */
+  }
+
+  .categories button.category-button {
+    font-size: 1rem; /* Mindre skrift på små skærme */
+    margin: 0.25rem 0;
+    padding: 0.75rem;
+  }
+
+  .screen button:not(.category-button) {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+}

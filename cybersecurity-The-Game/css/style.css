@@ -1,0 +1,251 @@
+@charset "UTF-8";
+body {
+  margin: 0%;
+  color: #ffffff;
+  font-family: orbitron, sans-serif;
+  min-height: 100vh;
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.background-video video {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.game-container {
+  width: 100%; /* Sikrer at containeren fylder bredden af body (inden for margener/padding) */
+  max-width: 800px; /* Din ønskede faste maksimale bredde */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrer indholdet indeni vandret */
+  position: relative;
+  z-index: 1;
+  margin: 2rem auto; /* Tilføj top og bund margin for vertikal afstand og auto for horisontal centrering */
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  background: rgba(17, 59, 41, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2rem;
+}
+.screen.active {
+  display: block;
+}
+.screen.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+h1, h2 {
+  color: #47ff6f;
+  text-shadow: 0 0 10px #47ff6f;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+h1 {
+  font-size: xxx-large;
+}
+
+h2 {
+  font-size: x-large;
+}
+
+p {
+  font-family: "Roboto Mono", monospace;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column; /* Stak knapperne vertikalt */
+  width: 100%; /* Sikrer at containeren fylder bredden */
+  align-items: stretch; /* Strækker knapperne til at fylde bredden */
+  margin-bottom: 1rem; /* Tilføj margin under kategoriknapperne */
+}
+.categories button.category-button {
+  font-family: "Roboto Mono", monospace;
+  background: linear-gradient(to bottom, #2aa946, #096438);
+  border: 1px solid #333;
+  padding: 1rem;
+  margin: 0.5rem 0; /* Top og bund margin for afstand mellem knapper */
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1.1rem; /* Lidt større skrift for kategorier */
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+.categories button.category-button:hover {
+  background: linear-gradient(to bottom, #38ce59, #0d9352);
+  transform: scale(1.03);
+  box-shadow: 0 6px 8px rgba(77, 77, 77, 0.5);
+}
+.categories button.category-button:focus {
+  outline: 2px solid #47ff6f;
+  outline-offset: 2px;
+}
+
+#answers button {
+  font-family: "Roboto Mono", monospace;
+  background: linear-gradient(to bottom, #2aa946, #096438);
+  border: 1px solid #333;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  width: 100%;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-align: left; /* Venstrejuster tekst i svarmuligheder */
+}
+#answers button:hover {
+  background: linear-gradient(to bottom, #38ce59, #0d9352);
+  transform: scale(1.03);
+  box-shadow: 0 4px 8px rgba(26, 26, 26, 0.5);
+}
+#answers button:focus {
+  outline: 2px solid #47ff6f;
+  outline-offset: 2px;
+}
+
+.screen button:not(.category-button) {
+  font-family: "Roboto Mono", monospace;
+  background: linear-gradient(to bottom, #2aa946, #096438);
+  border: 1px solid #333;
+  padding: 1rem 2rem; /* Lidt mere horisontal padding */
+  margin-top: 1rem; /* Tilføj lidt top margin */
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1.1rem; /* Samme størrelse som kategoriknapper */
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  width: auto; /* Tilpas bredden til indholdet */
+  display: block; /* Sikrer at knapper tager fuld bredde af deres container (centeret af .screen) */
+  margin-left: auto;
+  margin-right: auto;
+}
+.screen button:not(.category-button):hover {
+  background: linear-gradient(to bottom, #38ce59, #0d9352);
+  transform: scale(1.03);
+  box-shadow: 0 4px 8px rgba(26, 26, 26, 0.5);
+}
+.screen button:not(.category-button):focus {
+  outline: 2px solid #47ff6f;
+  outline-offset: 2px;
+}
+
+#result-screen h2 {
+  margin-top: 0;
+}
+#result-screen p {
+  margin-bottom: 1rem;
+}
+#result-screen #final-score {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+#result-screen #final-title {
+  font-style: italic;
+  margin-bottom: 0.5rem;
+  color: #5ff894;
+}
+
+#result-screen .user-choices-overview {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(17, 17, 17, 0.7); /* En lidt lysere baggrund for oversigten */
+  border-radius: 8px;
+  text-align: left;
+  line-height: 30px;
+  font-family: "Roboto Mono", monospace;
+}
+
+#result-screen .user-choices-overview h3 {
+  color: #5ff894;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#result-screen .user-choices-overview ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#result-screen .user-choices-overview li {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #333;
+}
+
+#result-screen .user-choices-overview li:last-child {
+  border-bottom: none;
+}
+
+#result-screen .user-choices-overview strong {
+  color: #47ff6f;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 600px) {
+  .screen {
+    padding: 1rem;
+    border-radius: 5;
+  }
+  h1 {
+    font-size: x-large;
+  }
+  .categories {
+    flex-direction: column; /* Beholder vertikal stak på små skærme */
+  }
+  .categories button.category-button {
+    font-size: 1rem; /* Mindre skrift på små skærme */
+    margin: 0.25rem 0;
+    padding: 0.75rem;
+  }
+  .screen button:not(.category-button) {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+}/*# sourceMappingURL=style.css.map */

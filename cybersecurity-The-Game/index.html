@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cybersikkerhed: The Game</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <script src="js/script.js" defer></script>
+  <style>
+    /* Foreløbige styles for kategoriknapper på startsiden */
+    .category-button {
+      padding: 1rem 2rem;
+      margin: 0.5rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <div class="background-video">
+      <video autoplay loop muted playsinline>
+        <source src="video/bgvideo.mp4" type="video/mp4">
+        Din browser understøtter ikke videoafspilning.
+      </video>
+    </div>
+
+  <section id="start-screen" class="screen active">
+    <h1>CYBERSIKKERHED<br/>THE GAME</h1>
+    <div class="categories">
+      <button class="category-button" data-category="adgangskoder">Adgangskoder</button>
+      <button class="category-button" data-category="phishing">Phishing</button>
+      <button class="category-button" data-category="opdateringer">Opdateringer</button>
+    </div>
+  </section>
+
+  <section id="explanation-screen" class="screen">
+    <h2>Sådan spiller du</h2>
+    <p id="explanation-text"></p>
+    <button id="start-quiz">Start</button>
+  </section>
+
+  <section id="question-screen" class="screen">
+    <h2 id="question-text">Spørgsmål her</h2>
+    <div id="answers" class="answers">
+      </div>
+    <p id="feedback-text"></p>
+    <button id="next-button" style="display:none;">Næste</button> 
+  </section>
+
+  <section id="result-screen" class="screen">
+    <h2>Resultat</h2>
+    <p id="final-score"></p>
+    <p id="final-title"></p>
+    <p id="final-feedback"></p>
+    <button id="restart-button">Start igen</button>
+  </section>
+  </div>
+    
+</body>
+</html>
