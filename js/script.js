@@ -307,7 +307,6 @@ downloadButton.addEventListener('click', () => {
 });
 startScreen.appendChild(downloadButton);
 
-
 explanationScreen.classList.remove("active");
 questionScreen.classList.remove("active");
 resultScreen.classList.remove("active");
