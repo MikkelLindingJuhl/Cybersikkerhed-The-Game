@@ -1,4 +1,4 @@
-// Farvepalet - juster disse for at ændre temaet
+
 $primary-dark: #0a0f2c;
 $secondary-dark: #113b29;
 $accent-color: #5ff894;
@@ -11,11 +11,11 @@ $cyber-accent: #47ff6f;
 $metallic-gradient-start: #2aa946;
 $metallic-gradient-end: #096438;
 
-// Typografi
+
 $main-font: orbitron, sans-serif;
 $mono-font: 'Roboto Mono', monospace;
 
-// Generelle styles for body
+
 body {
   margin:0%;
   color: $text-color;
@@ -29,7 +29,7 @@ body {
   flex-direction: column;
 }
 
-// Styling for baggrundsvideo-container
+
 .background-video {
   position: fixed;
   top: 0;
@@ -53,17 +53,16 @@ body {
 }
 
 .game-container {
-    width: 100%; /* Sikrer at containeren fylder bredden af body (inden for margener/padding) */
-    max-width: 800px; /* Din ønskede faste maksimale bredde */
+    width: 100%;
+    max-width: 800px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centrer indholdet indeni vandret */
+    align-items: center;
     position: relative;
     z-index: 1;
-    margin: 2rem auto; /* Tilføj top og bund margin for vertikal afstand og auto for horisontal centrering */
+    margin: 2rem auto;
   }
 
-// Styling for de forskellige skærmsektioner
 .screen {
   display: none;
   width: 100%;
@@ -83,7 +82,7 @@ body {
   }
 }
 
-// Styling for overskrifter
+
 h1, h2 {
   color: $cyber-accent;
   text-shadow: 0 0 10px $cyber-accent;
@@ -104,23 +103,23 @@ p {
   font-family: $mono-font;
 }
 
-// Styling for kategoriknapper på startsiden
+
 .categories {
   display: flex;
-  flex-direction: column; /* Stak knapperne vertikalt */
-  width: 100%; /* Sikrer at containeren fylder bredden */
-  align-items: stretch; /* Strækker knapperne til at fylde bredden */
-  margin-bottom: 1rem; /* Tilføj margin under kategoriknapperne */
+  flex-direction: column;
+  width: 100%;
+  align-items: stretch;
+  margin-bottom: 1rem;
 
   button.category-button {
     font-family: $mono-font;
     background: linear-gradient(to bottom, $metallic-gradient-start, $metallic-gradient-end);
     border: 1px solid $border-color;
     padding: 1rem;
-    margin: 0.5rem 0; /* Top og bund margin for afstand mellem knapper */
+    margin: 0.5rem 0;
     border-radius: 8px;
     color: $text-color;
-    font-size: 1.1rem; /* Lidt større skrift for kategorier */
+    font-size: 1.1rem;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     box-shadow: 0 2px 4px $shadow-color;
@@ -155,7 +154,7 @@ p {
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     box-shadow: 0 2px 4px $shadow-color;
-    text-align: left; /* Venstrejuster tekst i svarmuligheder */
+    text-align: left;
 
     &:hover {
       background: linear-gradient(to bottom, lighten($metallic-gradient-start, 10%), lighten($metallic-gradient-end, 10%));
@@ -170,21 +169,21 @@ p {
   }
 }
 
-// Styling for generelle knapper (Start, Start igen)
+
 .screen button:not(.category-button) {
   font-family: $mono-font;
   background: linear-gradient(to bottom, $metallic-gradient-start, $metallic-gradient-end);
   border: 1px solid $border-color;
-  padding: 1rem 2rem; /* Lidt mere horisontal padding */
-  margin-top: 1rem; /* Tilføj lidt top margin */
+  padding: 1rem 2rem;
+  margin-top: 1rem;
   border-radius: 8px;
   color: $text-color;
-  font-size: 1.1rem; /* Samme størrelse som kategoriknapper */
+  font-size: 1.1rem;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
   box-shadow: 0 2px 4px $shadow-color;
-  width: auto; /* Tilpas bredden til indholdet */
-  display: block; /* Sikrer at knapper tager fuld bredde af deres container (centeret af .screen) */
+  width: auto;
+  display: block;
   margin-left: auto;
   margin-right: auto;
 
@@ -226,7 +225,7 @@ p {
 #result-screen .user-choices-overview {
   margin-top: 2rem;
   padding: 1.5rem;
-  background: rgba(17, 17, 17, 0.7); /* En lidt lysere baggrund for oversigten */
+  background: rgba(17, 17, 17, 0.7);
   border-radius: 8px;
   text-align: left;
   line-height: 30px;
@@ -283,11 +282,11 @@ p {
   }
 
   .categories {
-    flex-direction: column; /* Beholder vertikal stak på små skærme */
+    flex-direction: column;
   }
 
   .categories button.category-button {
-    font-size: 1rem; /* Mindre skrift på små skærme */
+    font-size: 1rem;
     margin: 0.25rem 0;
     padding: 0.75rem;
   }

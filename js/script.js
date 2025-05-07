@@ -58,7 +58,7 @@ const scenarios = {
   "strong_bad_write_down_ending": { text: "At skrive din adgangskode ned gør den tilgængelig for alle, der finder sedlen.", options: [{ text: "Start forfra", next: "adgangskoder/start" }], isEnding: true, type: "bad", feedback: "Brug i stedet en sikker adgangskodeadministrator eller forsøg at huske den komplekse kode." },
   "strong_good_2fa_ending": { text: "Korrekt! To-faktor autentificering giver et markant løft i sikkerheden.", options: [{ text: "Afslut spillet", next: "win_ending" }], isEnding: true, type: "good", feedback: "Selv hvis din adgangskode skulle blive stjålet, vil 2FA forhindre uautoriseret adgang uden den anden faktor (f.eks. en kode fra din telefon)." },
   "strong_bad_tell_colleague_ending": { text: "Din adgangskode er personlig og bør forblive privat.", options: [{ text: "Start forfra", next: "adgangskoder/start" }], isEnding: true, type: "bad", feedback: "Deling af adgangskoder øger risikoen for misbrug og gør det svært at spore, hvem der har foretaget handlinger på kontoen." },
-  "win_ending": { text: "Spillet er slut. Tak for din deltagelse!", options: [{ text: "Start forfra", next: "start" }], isEnding: true, type: "good" } // Justeret type til 'good' for en positiv slutning
+  "win_ending": { text: "Spillet er slut. Tak for din deltagelse!", options: [{ text: "Start forfra", next: "start" }], isEnding: true, type: "good" }
 },
   "phishing": {
  "start": {
@@ -211,7 +211,7 @@ function startGame() {
   questionScreen.classList.add("active");
   currentScenario = "start";
   userChoices = [];
-  localStorage.removeItem('userChoices'); // Ryd valg ved start af nyt spil
+  localStorage.removeItem('userChoices');
   showScenario(currentScenario);
 }
 
@@ -221,7 +221,6 @@ function showExplanation(category) {
   startScreen.classList.remove("active");
   explanationScreen.classList.add("active");
   explanationText.textContent = `Du har valgt kategorien '${category}'. Gennemgå de følgende scenarier og træf de bedste beslutninger for at forbedre din cybersikkerhed. Klik på 'Start' for at begynde.`;
-  // Ryd også valg, når brugeren vælger en ny kategori (før spillet startes)
   userChoices = [];
   localStorage.removeItem('userChoices');
 }
@@ -252,7 +251,6 @@ function displayUserChoices() {
   const storedChoices = localStorage.getItem('userChoices');
   const choices = storedChoices ? JSON.parse(storedChoices) : [];
 
-  // Fjern eventuel tidligere visning af valg, før vi viser de nye
   const existingOverview = resultScreen.querySelector('.user-choices-overview');
   if (existingOverview) {
     resultScreen.removeChild(existingOverview);
@@ -280,12 +278,12 @@ function displayUserChoices() {
   }
 }
 
-// Ryd localStorage ved genindlæsning eller lukning af siden
+
 window.addEventListener('beforeunload', () => {
   localStorage.removeItem('userChoices');
 });
 
-// Event listeners
+
 categoryButtonsStart.forEach(button => {
   button.addEventListener("click", function() {
     showExplanation(this.dataset.category);
@@ -309,7 +307,7 @@ downloadButton.addEventListener('click', () => {
 });
 startScreen.appendChild(downloadButton);
 
-// Skjul de andre skærme ved start og vis startskærmen
+
 explanationScreen.classList.remove("active");
 questionScreen.classList.remove("active");
 resultScreen.classList.remove("active");
